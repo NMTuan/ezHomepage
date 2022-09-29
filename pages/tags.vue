@@ -2,7 +2,7 @@
  * @Author: NMTuan
  * @Email: NMTuan@qq.com
  * @Date: 2022-09-28 17:53:47
- * @LastEditTime: 2022-09-29 10:40:44
+ * @LastEditTime: 2022-09-29 14:41:17
  * @LastEditors: NMTuan
  * @Description: 
  * @FilePath: \ezHomepage\pages\tags.vue
@@ -10,7 +10,16 @@
 <template>
     <div>
         <h1>tags</h1>
-        <pre>{{data}}</pre>
+        <div v-for="item in data">
+            <NuxtLink :to="{
+                name: 'tags-id',
+                params: {
+                    id: item.tags_name
+                }
+            }">{{item.tags_name}}</NuxtLink>
+            {{item.count}}
+        </div>
+        <NuxtChild></NuxtChild>
     </div>
 </template>
 <script setup lang="ts">
