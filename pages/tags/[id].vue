@@ -2,7 +2,7 @@
  * @Author: NMTuan
  * @Email: NMTuan@qq.com
  * @Date: 2022-09-29 11:21:50
- * @LastEditTime: 2022-09-29 14:41:26
+ * @LastEditTime: 2022-09-29 16:52:45
  * @LastEditors: NMTuan
  * @Description: 
  * @FilePath: \ezHomepage\pages\tags\[id].vue
@@ -10,8 +10,7 @@
 <template>
     <div>
         <h2>tag detail</h2>
-        <pre>{{meta}}</pre>
-        <pre>{{data}}</pre>
+        <ListItem v-for="item in data" :item="item"></ListItem>
     </div>
 </template>
 <script setup lang="ts">
