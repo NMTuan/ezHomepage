@@ -2,14 +2,14 @@
  * @Author: NMTuan
  * @Email: NMTuan@qq.com
  * @Date: 2022-07-29 15:37:19
- * @LastEditTime: 2022-09-29 16:51:46
+ * @LastEditTime: 2022-09-29 17:13:25
  * @LastEditors: NMTuan
  * @Description: 
- * @FilePath: \ezHomepage\pages\list.vue
+ * @FilePath: \ezHomepage\pages\bookmarks.vue
 -->
 <template>
     <div>
-        <h1>list</h1>
+        <h1>bookmarks</h1>
         <ListItem v-for="item in data" :item="item"></ListItem>
     </div>
 </template>
