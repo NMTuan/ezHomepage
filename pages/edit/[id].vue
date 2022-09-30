@@ -1,15 +1,16 @@
 <!--
  * @Author: NMTuan
  * @Email: NMTuan@qq.com
- * @Date: 2022-09-29 17:13:47
- * @LastEditTime: 2022-09-30 16:32:27
+ * @Date: 2022-09-30 16:57:21
+ * @LastEditTime: 2022-09-30 17:36:58
  * @LastEditors: NMTuan
  * @Description: 
- * @FilePath: \ezHomepage\pages\add.vue
+ * @FilePath: \ezHomepage\pages\edit\[id].vue
 -->
 <template>
     <div>
-        <h1>add</h1>
+        <h1>update</h1>
+        <div>{{id}}</div>
         <form action="" @submit.prevent="handleSubmit">
             <p>
                 <input type="text" autocomplete="off" placeholder="site title" v-model="title">
@@ -19,23 +20,21 @@
             </p>
             <p>
                 <input type="text" autocomplete="off" placeholder="tags" v-model="tags">
-                {{formatedTags}}
                 （中英文逗号或空格都会分割 tag）
                 <br>{{formatedTags}}
             </p>
             <p><input type="submit" value="submit"></p>
         </form>
-        <div>
-
-        </div>
     </div>
 </template>
 <script setup lang="ts">
+const route = useRoute()
+const id = route.params.id
 const directus = useDirectus()
 const title = ref('')
 const url = ref('')
 const tags = ref('')
-
+const deleteTagsId = ref([])    // 要移除的tagsId
 const formatedTags = computed(() => {
     return tags.value.replace(/\s/g, ' ')
         // 分割
@@ -62,16 +61,30 @@ const formatedTags = computed(() => {
 })
 
 const handleSubmit = () => {
-    console.log('[submit]', formatedTags);
-    if (!title.value || !url.value) {
-        return
-    }
-
-    directus.items('bookmarks').createOne({
+    const data = {
         name: title.value,
         url: url.value,
-        tags: formatedTags.value
-    })
-
+        // 这里粗暴一点
+        // 把原来的所有 tagsId 都删掉
+        // 然后把新的 tags 全部加进去
+        tags: {
+            create: formatedTags.value,
+            delete: deleteTagsId.value
+        }
+    }
+    directus.items('bookmarks').updateOne(id, data)
 }
+
+directus.items('bookmarks').readOne(id, {
+    fields: '*.*'
+})
+    .then(res => {
+        title.value = res.name
+        url.value = res.url
+        tags.value = res.tags.reduce((total, item) => {
+            deleteTagsId.value.push(item.id)
+            total.push(item.tags_name)
+            return total
+        }, []).join(' ')
+    })
 </script>
