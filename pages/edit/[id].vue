@@ -2,7 +2,7 @@
  * @Author: NMTuan
  * @Email: NMTuan@qq.com
  * @Date: 2022-09-30 16:57:21
- * @LastEditTime: 2022-09-30 17:36:58
+ * @LastEditTime: 2022-09-30 17:49:35
  * @LastEditors: NMTuan
  * @Description: 
  * @FilePath: \ezHomepage\pages\edit\[id].vue
@@ -29,6 +29,7 @@
 </template>
 <script setup lang="ts">
 const route = useRoute()
+const router = useRouter()
 const id = route.params.id
 const directus = useDirectus()
 const title = ref('')
@@ -73,6 +74,9 @@ const handleSubmit = () => {
         }
     }
     directus.items('bookmarks').updateOne(id, data)
+        .then(() => {
+            navigateTo(router.options.history.state.back)
+        })
 }
 
 directus.items('bookmarks').readOne(id, {

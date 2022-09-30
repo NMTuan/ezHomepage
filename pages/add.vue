@@ -2,7 +2,7 @@
  * @Author: NMTuan
  * @Email: NMTuan@qq.com
  * @Date: 2022-09-29 17:13:47
- * @LastEditTime: 2022-09-30 16:32:27
+ * @LastEditTime: 2022-09-30 17:50:02
  * @LastEditors: NMTuan
  * @Description: 
  * @FilePath: \ezHomepage\pages\add.vue
@@ -31,6 +31,7 @@
     </div>
 </template>
 <script setup lang="ts">
+const router = useRouter()
 const directus = useDirectus()
 const title = ref('')
 const url = ref('')
@@ -72,6 +73,10 @@ const handleSubmit = () => {
         url: url.value,
         tags: formatedTags.value
     })
+        .then(() => {
+            navigateTo(router.options.history.state.back)
+        })
+
 
 }
 </script>
