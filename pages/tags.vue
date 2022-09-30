@@ -2,7 +2,7 @@
  * @Author: NMTuan
  * @Email: NMTuan@qq.com
  * @Date: 2022-09-28 17:53:47
- * @LastEditTime: 2022-09-29 14:41:17
+ * @LastEditTime: 2022-09-30 18:00:28
  * @LastEditors: NMTuan
  * @Description: 
  * @FilePath: \ezHomepage\pages\tags.vue
@@ -19,6 +19,7 @@
             }">{{item.tags_name}}</NuxtLink>
             {{item.count}}
         </div>
+        <pre>{{data}}</pre>
         <NuxtChild></NuxtChild>
     </div>
 </template>
@@ -31,8 +32,10 @@ directus.items('bookmarks_tags').readByQuery({
         'tags_name',
     ],
     aggregate: {
-        count: '*'
-    }
+        count: 'id'
+        // count: '*'
+    },
+    sort: ['id']
 })
     .then(res => {
         data.value = res.data
