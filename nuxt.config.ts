@@ -2,12 +2,13 @@
  * @Author: NMTuan
  * @Email: NMTuan@qq.com
  * @Date: 2022-07-29 10:07:12
- * @LastEditTime: 2022-09-28 17:03:30
+ * @LastEditTime: 2022-10-18 15:01:09
  * @LastEditors: NMTuan
  * @Description:
  * @FilePath: \ezHomepage\nuxt.config.ts
  */
 import { defineNuxtConfig } from 'nuxt'
+import transformerDirective from '@unocss/transformer-directives'
 
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
@@ -18,7 +19,7 @@ export default defineNuxtConfig({
         uno: true, // enabled `@unocss/preset-uno`
         icons: true, // enabled `@unocss/preset-icons`
         attributify: true, // enabled `@unocss/preset-attributify`,
-        transformers: [],
+        transformers: [transformerDirective()],
         shortcuts: [],
         rules: [],
         safelist: []

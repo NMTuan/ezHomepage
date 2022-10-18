@@ -2,14 +2,14 @@
  * @Author: NMTuan
  * @Email: NMTuan@qq.com
  * @Date: 2022-07-29 10:07:12
- * @LastEditTime: 2022-09-28 17:11:43
+ * @LastEditTime: 2022-10-18 15:03:35
  * @LastEditors: NMTuan
  * @Description: 
  * @FilePath: \ezHomepage\app.vue
 -->
 <template>
   <div>
-    <button @click="handleLogout">logout</button>
+    <!-- <button @click="handleLogout">logout</button> -->
     <!-- <div text="5xl sky" m="x-auto b-2" class="i-ri-global-line">
     </div>
     <div bg="sky" p="y-2" border="rounded-lg" text="white" m="t-2">
@@ -29,7 +29,7 @@
 </template>
 <script setup lang="ts">
 
-import '@unocss/reset/normalize.css'
+import '@unocss/reset/tailwind.css'
 const directus = useDirectus()
 // 设定默认语言
 // const { locale } = useI18n()
@@ -44,3 +44,11 @@ const handleLogout = async () => {
   navigateTo({ name: 'login' })
 }
 </script>
+<style lang="scss">
+html,
+body,
+#__nuxt,
+#__nuxt>div {
+  @apply h-full overflow-hidden;
+}
+</style>

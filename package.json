@@ -2,7 +2,7 @@
     "private": true,
     "scripts": {
         "build": "nuxt build",
-        "dev": "nuxt dev",
+        "dev": "nuxt dev -p 3344",
         "generate": "nuxt generate",
         "preview": "nuxt preview",
         "nuxi upgrade": "nuxi upgrade --force"
@@ -12,10 +12,12 @@
         "@intlify/nuxt3": "^0.2.3",
         "@nuxtjs/color-mode": "^3.1.4",
         "@unocss/nuxt": "^0.44.7",
+        "@unocss/transformer-directives": "^0.45.29",
         "nuxt": "3.0.0-rc.11"
     },
     "dependencies": {
         "@directus/sdk": "^10.1.4",
-        "@unocss/reset": "^0.45.25"
+        "sass": "^1.55.0",
+        "simplebar": "^5.3.9"
     }
 }
