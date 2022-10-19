@@ -2,7 +2,7 @@
  * @Author: NMTuan
  * @Email: NMTuan@qq.com
  * @Date: 2022-09-29 16:25:23
- * @LastEditTime: 2022-10-18 16:09:53
+ * @LastEditTime: 2022-10-19 15:44:40
  * @LastEditors: NMTuan
  * @Description: 
  * @FilePath: \ezHomepage\components\list\item.vue
@@ -14,19 +14,22 @@
     rounded
     text-white
     transition-all
-    " :class="itemClassNames">
+    " :class="itemClassNames" @click="handleClick">
         <div class="flex mb-2">
             <div class=" flex-1 truncate">
                 {{item.name}}
+                <sup class="text-white/50">{{item.clicks_count}}</sup>
             </div>
             <NuxtLink :to="{name: 'edit-id', params: {
                 id: item.id
             }}" class="
-                    ml-1 flex items-center
-                    " v-show="active">
-                <div class="i-ri-pencil-fill text-neutral-400 transition-all
-                hover:text-neutral-100
-                "></div>
+            ml-1 flex items-center
+            rounded w-6 h-6 text-center
+            " hover="bg-sky-800/50" v-show="active" @click.stop="">
+                <div class="i-ri-pencil-fill text-white/50 transition-all
+                mx-auto
+                ">
+                </div>
             </NuxtLink>
         </div>
         <div class="flex items-center">
@@ -56,6 +59,7 @@
     </div>
 </template>
 <script setup lang="ts">
+const directus = useDirectus()
 const props = defineProps({
     item: {
         type: Object,
@@ -89,4 +93,27 @@ const urlClassName = computed(() => {
     return className
 })
 
+const handleClick = () => {
+    // 打开
+    window.open(props.item.url)
+
+    // 次数+1
+    directus.items('clicks').createOne({
+        bookmark_id: props.item.id
+    })
+
+    // directus.items('bookmarks').readOne(props.item.id, {
+    //     fields: ['clicks']
+    // })
+    //     .then((res) => {
+    //         return directus.items('bookmarks').updateOne(props.item.id, {
+    //             clicks: parseInt(res.clicks) + 1
+    //         })
+    //     })
+    //     .then((res) => {
+    //         if (res.clicks !== undefined) {
+    //             props.item.clicks = res.clicks
+    //         }
+    //     })
+}
 </script>

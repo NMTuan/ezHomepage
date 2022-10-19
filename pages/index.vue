@@ -2,7 +2,7 @@
  * @Author: NMTuan
  * @Email: NMTuan@qq.com
  * @Date: 2022-07-29 15:35:30
- * @LastEditTime: 2022-10-18 16:37:02
+ * @LastEditTime: 2022-10-19 17:28:04
  * @LastEditors: NMTuan
  * @Description: 
  * @FilePath: \ezHomepage\pages\index.vue
@@ -47,7 +47,17 @@ const handleActive = (index) => {
 
 directus.items('bookmarks').readByQuery({
     meta: '*',
-    fields: '*.*'
+    fields: [
+        'id',
+        'name',
+        'url',
+        // 'date_updated',
+        'tags.*',
+        'count(clicks)',
+        'clicks.*'
+    ],
+    // sort: ['clicks.date_created']
+    // sort: ['-date_updated']
 })
     .then(res => {
         data.value = res.data
