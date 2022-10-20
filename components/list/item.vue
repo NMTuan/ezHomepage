@@ -2,7 +2,7 @@
  * @Author: NMTuan
  * @Email: NMTuan@qq.com
  * @Date: 2022-09-29 16:25:23
- * @LastEditTime: 2022-10-19 15:44:40
+ * @LastEditTime: 2022-10-20 14:26:03
  * @LastEditors: NMTuan
  * @Description: 
  * @FilePath: \ezHomepage\components\list\item.vue
@@ -97,10 +97,17 @@ const handleClick = () => {
     // 打开
     window.open(props.item.url)
 
-    // 次数+1
+    // 次数+1，同时更新下编辑时间，列表要根据编辑时间排序
     directus.items('clicks').createOne({
         bookmark_id: props.item.id
     })
+        .then(() => {
+            return directus.items('bookmarks').updateOne(props.item.id, {})
+        })
+        // .then(res => {
+        //     console.log('res', res);
+        // })
+    
 
     // directus.items('bookmarks').readOne(props.item.id, {
     //     fields: ['clicks']
