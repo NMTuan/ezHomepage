@@ -2,15 +2,13 @@
  * @Author: NMTuan
  * @Email: NMTuan@qq.com
  * @Date: 2022-09-30 16:57:21
- * @LastEditTime: 2022-09-30 17:49:35
+ * @LastEditTime: 2022-10-20 17:23:01
  * @LastEditors: NMTuan
  * @Description: 
  * @FilePath: \ezHomepage\pages\edit\[id].vue
 -->
 <template>
-    <div>
-        <h1>update</h1>
-        <div>{{id}}</div>
+    <BaseDialog title="编辑">
         <form action="" @submit.prevent="handleSubmit">
             <p>
                 <input type="text" autocomplete="off" placeholder="site title" v-model="title">
@@ -25,7 +23,8 @@
             </p>
             <p><input type="submit" value="submit"></p>
         </form>
-    </div>
+        <div v-for="i in 100">{{i}}</div>
+    </BaseDialog>
 </template>
 <script setup lang="ts">
 const route = useRoute()
@@ -92,3 +91,9 @@ directus.items('bookmarks').readOne(id, {
         }, []).join(' ')
     })
 </script>
+
+<style lang="scss" scoped>
+input {
+    @apply border w-full p-2;
+}
+</style>
