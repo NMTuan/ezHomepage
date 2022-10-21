@@ -2,7 +2,7 @@
  * @Author: NMTuan
  * @Email: NMTuan@qq.com
  * @Date: 2022-07-29 16:05:46
- * @LastEditTime: 2022-10-21 14:38:06
+ * @LastEditTime: 2022-10-21 16:39:08
  * @LastEditors: NMTuan
  * @Description: 
  * @FilePath: \ezHomepage\layouts\default.vue
@@ -35,7 +35,7 @@
                 <div class="i-ri-more-fill"></div>
             </div>
         </div>
-        <BaseSimplebar class="
+        <BaseSimplebar ref="simplebar" class="
         flex-1 overflow-hidden
         relative
         m-3 mt-0
@@ -53,6 +53,7 @@ const data = ref([])
 const active = ref(0)   // 高亮项目
 const el = ref(null)    // 搜索框
 const q = ref('')   // 关键字
+const simplebar = ref(null)
 
 // 处理高亮
 const handleActive = (index) => {
@@ -116,6 +117,9 @@ const fetch = () => {
 watchEffect(() => {
     if (route.name === 'index') {
         fetch()
+        if (simplebar.value) {
+            simplebar.value.scrollTop()
+        }
     }
 })
 
