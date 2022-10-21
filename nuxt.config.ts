@@ -14,6 +14,7 @@ import transformerDirective from '@unocss/transformer-directives'
 export default defineNuxtConfig({
     ssr: false,
     modules: ['@unocss/nuxt', '@intlify/nuxt3', '@nuxtjs/color-mode'],
+    css: ['@unocss/reset/tailwind.css'],
     unocss: {
         // presets
         uno: true, // enabled `@unocss/preset-uno`

@@ -2,7 +2,7 @@
  * @Author: NMTuan
  * @Email: NMTuan@qq.com
  * @Date: 2022-07-29 10:07:12
- * @LastEditTime: 2022-10-18 15:03:35
+ * @LastEditTime: 2022-10-21 11:34:49
  * @LastEditors: NMTuan
  * @Description: 
  * @FilePath: \ezHomepage\app.vue
@@ -29,7 +29,6 @@
 </template>
 <script setup lang="ts">
 
-import '@unocss/reset/tailwind.css'
 const directus = useDirectus()
 // 设定默认语言
 // const { locale } = useI18n()
