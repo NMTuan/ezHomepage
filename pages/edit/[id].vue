@@ -2,7 +2,7 @@
  * @Author: NMTuan
  * @Email: NMTuan@qq.com
  * @Date: 2022-09-30 16:57:21
- * @LastEditTime: 2022-10-21 14:32:45
+ * @LastEditTime: 2022-10-21 16:17:23
  * @LastEditors: NMTuan
  * @Description: 
  * @FilePath: \ezHomepage\pages\edit\[id].vue
@@ -20,15 +20,18 @@
                 <input class="input" type="text" autocomplete="off" placeholder="tags（中英文逗号或空格都会分割 tag）" v-model="tags">
             </p>
             <p class="flex items-center">
-                <button class=" h-11 px-4 py-3 rounded cursor-pointer leading-5 flex-grow bg-sky-500/50" type="submit">
+                <button class=" h-11 px-4 py-3 rounded cursor-pointer leading-5 flex-grow bg-sky-500/50"
+                    hover="bg-sky-800" type="submit">
                     <div v-if="loading" class="i-ri-loader-4-fill animate-spin mx-auto text-lg"></div>
                     <div v-else>submit</div>
                 </button>
-                <button class=" h-11 px-4 py-3 rounded cursor-pointer leading-5 flex-shrink-0 bg-red-500/50 ml-3">
+                <button class=" h-11 px-4 py-3 rounded cursor-pointer leading-5 flex-shrink-0 bg-red-500/50 ml-3"
+                    hover="bg-red-800" type="button" @click="handleDelete">
                     <div class="i-ri-delete-bin-5-line text-lg"></div>
                 </button>
             </p>
         </form>
+        <NuxtPage />
     </BaseDialog>
 </template>
 <script setup lang="ts">
@@ -95,7 +98,7 @@ const handleSubmit = () => {
         })
 }
 
-// 
+// 拉取数据
 const fetch = () => {
     loading.value = true
     directus.items('bookmarks').readOne(id.toString(), {
@@ -120,6 +123,18 @@ const fetch = () => {
                 return total
             }, []).join(' ')
         })
+}
+
+// 删除操作
+const handleDelete = () => {
+    navigateTo({
+        name: 'edit-id-delete',
+        id: id,
+        state: {
+            title: title.value,
+            url: url.value
+        }
+    })
 }
 
 fetch()

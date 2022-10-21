@@ -2,7 +2,7 @@
  * @Author: NMTuan
  * @Email: NMTuan@qq.com
  * @Date: 2022-09-29 16:25:23
- * @LastEditTime: 2022-10-20 14:26:03
+ * @LastEditTime: 2022-10-21 15:49:58
  * @LastEditors: NMTuan
  * @Description: 
  * @FilePath: \ezHomepage\components\list\item.vue
@@ -104,10 +104,10 @@ const handleClick = () => {
         .then(() => {
             return directus.items('bookmarks').updateOne(props.item.id, {})
         })
-        // .then(res => {
-        //     console.log('res', res);
-        // })
-    
+    // .then(res => {
+    //     console.log('res', res);
+    // })
+
 
     // directus.items('bookmarks').readOne(props.item.id, {
     //     fields: ['clicks']

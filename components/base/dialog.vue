@@ -2,7 +2,7 @@
  * @Author: NMTuan
  * @Email: NMTuan@qq.com
  * @Date: 2022-10-20 17:09:24
- * @LastEditTime: 2022-10-21 11:09:19
+ * @LastEditTime: 2022-10-21 16:16:22
  * @LastEditors: NMTuan
  * @Description: 
  * @FilePath: \ezHomepage\components\base\dialog.vue
@@ -43,6 +43,10 @@ const props = defineProps({
     title: {
         type: String,
         default: ''
+    },
+    closeOnClickMask: {
+        type: Boolean,
+        default: false
     }
 })
 
@@ -50,7 +54,9 @@ const close = () => {
     router.back()
 }
 const clickMask = () => {
-    // close()
+    if (props.closeOnClickMask) {
+        close()
+    }
 }
 const clickCloseIcon = () => {
     close()
