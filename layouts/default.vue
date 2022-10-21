@@ -2,7 +2,7 @@
  * @Author: NMTuan
  * @Email: NMTuan@qq.com
  * @Date: 2022-07-29 16:05:46
- * @LastEditTime: 2022-10-21 16:39:08
+ * @LastEditTime: 2022-10-21 17:20:21
  * @LastEditors: NMTuan
  * @Description: 
  * @FilePath: \ezHomepage\layouts\default.vue
@@ -98,6 +98,7 @@ const fetch = () => {
             'name',
             'url',
             // 'date_updated',
+            // 'date_created',
             'tags.*',
             'count(clicks)',
             // 'clicks.*'

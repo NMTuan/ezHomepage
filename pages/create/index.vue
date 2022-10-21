@@ -1,0 +1,100 @@
+<!--
+ * @Author: NMTuan
+ * @Email: NMTuan@qq.com
+ * @Date: 2022-10-21 16:46:05
+ * @LastEditTime: 2022-10-21 17:19:22
+ * @LastEditors: NMTuan
+ * @Description: 
+ * @FilePath: \ezHomepage\pages\create\index.vue
+-->
+<template>
+    <BaseDialog title="添加">
+        <form action="" @submit.prevent="handleSubmit">
+            <p>
+                <input class="input" type="text" autocomplete="off" placeholder="site title" v-model="formData.name">
+            </p>
+            <p>
+                <input class="input" type="text" autocomplete="off" placeholder="site url" v-model="formData.url">
+            </p>
+            <p>
+                <input class="input" type="text" autocomplete="off" placeholder="tags（中英文逗号或空格都会分割 tag）" v-model="tags">
+            </p>
+            <p class="flex items-center">
+                <button class=" h-11 px-4 py-3 rounded cursor-pointer leading-5 flex-grow bg-sky-500/50"
+                    hover="bg-sky-800" type="submit">
+                    <div v-if="loading" class="i-ri-loader-4-fill animate-spin mx-auto text-lg"></div>
+                    <div v-else>submit</div>
+                </button>
+            </p>
+        </form>
+    </BaseDialog>
+</template>
+<script setup>
+const directus = useDirectus()
+const formData = ref({
+    name: '',
+    url: ''
+})
+const tags = ref('')
+const loading = ref(false)
+
+
+// 处理 输入框中的 tags
+const formatedTags = computed(() => {
+    return tags.value.replace(/\s/g, ' ')
+        // 分割
+        .split(/[,， ]/)
+        // 去重
+        .reduce((total, tag) => {
+            // 存在且不重复
+            if (tag && total.indexOf(tag) < 0) {
+                total.push(tag)
+            }
+            return total
+        }, [])
+        // 整理数据格式
+        // tags.name 为主键，因为想要它能自动创建或关联已存在数据。
+        // 这里传参要注意，第一层为关联表中字段的名字，第二层为tags表的主键。
+        .reduce((total, tag) => {
+            total.push({
+                tags_name: {
+                    name: tag
+                }
+            })
+            return total
+        }, [])
+})
+
+// 提交表单
+const handleSubmit = () => {
+    if (loading.value) {
+        return
+    }
+    const data = {
+        name: formData.value.name,
+        url: formData.value.url,
+        tags: formatedTags.value,
+        date_updated: new Date().toISOString()
+    }
+    loading.value = true
+    directus.items('bookmarks').createOne(data)
+        .then(() => {
+            loading.value = false
+            navigateTo({
+                name: 'index',
+                replace: true,
+            })
+        })
+}
+
+
+</script>
+<style lang="scss" scoped>
+.input {
+    @apply w-full rounded p-3 mb-3;
+    @apply bg-neutral-500;
+    @apply outline-none;
+    @apply text-white;
+    // @apply hover-(bg-neutral-400);
+}
+</style>
