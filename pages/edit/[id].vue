@@ -2,7 +2,7 @@
  * @Author: NMTuan
  * @Email: NMTuan@qq.com
  * @Date: 2022-09-30 16:57:21
- * @LastEditTime: 2022-10-21 14:27:01
+ * @LastEditTime: 2022-10-21 14:32:45
  * @LastEditors: NMTuan
  * @Description: 
  * @FilePath: \ezHomepage\pages\edit\[id].vue
@@ -98,7 +98,7 @@ const handleSubmit = () => {
 // 
 const fetch = () => {
     loading.value = true
-    directus.items('bookmarks').readOne(id, {
+    directus.items('bookmarks').readOne(id.toString(), {
         fields: [
             'id',
             'name',

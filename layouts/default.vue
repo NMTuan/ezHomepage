@@ -2,7 +2,7 @@
  * @Author: NMTuan
  * @Email: NMTuan@qq.com
  * @Date: 2022-07-29 16:05:46
- * @LastEditTime: 2022-10-21 14:26:14
+ * @LastEditTime: 2022-10-21 14:38:06
  * @LastEditors: NMTuan
  * @Description: 
  * @FilePath: \ezHomepage\layouts\default.vue
@@ -21,7 +21,7 @@
         rounded
         m-3
         ">
-            <input type="text" placeholder="keyword" v-model="q" class="
+            <input ref="el" type="text" placeholder="keyword" v-model="q" class="
             text-white
             flex-grow bg-transparent px-4 py-3 outline-none
             " />
@@ -51,6 +51,7 @@ const route = useRoute()
 const directus = useDirectus()
 const data = ref([])
 const active = ref(0)   // 高亮项目
+const el = ref(null)    // 搜索框
 const q = ref('')   // 关键字
 
 // 处理高亮
@@ -115,6 +116,18 @@ const fetch = () => {
 watchEffect(() => {
     if (route.name === 'index') {
         fetch()
+    }
+})
+
+// 自动焦点(首次加载页面)
+onMounted(() => {
+    el.value.focus()
+})
+
+// 自动焦点(每次回到首页)
+watch(route, () => {
+    if (route.name === 'index') {
+        el.value.focus()
     }
 })
 </script>
