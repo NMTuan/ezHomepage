@@ -2,7 +2,7 @@
  * @Author: NMTuan
  * @Email: NMTuan@qq.com
  * @Date: 2022-07-29 16:05:46
- * @LastEditTime: 2022-10-20 17:14:20
+ * @LastEditTime: 2022-10-21 14:26:14
  * @LastEditors: NMTuan
  * @Description: 
  * @FilePath: \ezHomepage\layouts\default.vue
@@ -47,15 +47,19 @@
     </div>
 </template>
 <script setup lang="ts">
+const route = useRoute()
 const directus = useDirectus()
 const data = ref([])
-const active = ref(0)
-const q = ref('')
+const active = ref(0)   // 高亮项目
+const q = ref('')   // 关键字
 
+// 处理高亮
 const handleActive = (index) => {
     active.value = index
 }
 
+// 过滤参数
+// TODO 空格分割条件；井号匹配标签
 const queryFilter = computed(() => {
     if (q.value === '') {
         return {}
@@ -83,6 +87,7 @@ const queryFilter = computed(() => {
     }
 })
 
+// 拉取数据
 const fetch = () => {
     directus.items('bookmarks').readByQuery({
         meta: '*',
@@ -104,8 +109,12 @@ const fetch = () => {
         })
 }
 
+// 自动重载数据
+// 1. 当路由回到首页
+// 2. 当 queryFilter 变更
 watchEffect(() => {
-    fetch()
+    if (route.name === 'index') {
+        fetch()
+    }
 })
-
 </script>

@@ -2,16 +2,16 @@
  * @Author: NMTuan
  * @Email: NMTuan@qq.com
  * @Date: 2022-10-20 17:09:24
- * @LastEditTime: 2022-10-20 17:28:14
+ * @LastEditTime: 2022-10-21 11:09:19
  * @LastEditors: NMTuan
  * @Description: 
  * @FilePath: \ezHomepage\components\base\dialog.vue
 -->
 <template>
     <div class="text-neutral-300">
-        <div class="absolute inset-0 z-10 bg-neutral-900/80" @click="clickMask">
+        <div class="absolute inset-0 z-10 bg-neutral-900/80 backdrop-blur-sm" @click="clickMask">
             <BaseSimplebar class="h-full overflow-hidden">
-                <div class="bg-neutral-600 mx-auto my-12vh overflow-hidden rounded p-4
+                <div class="bg-neutral-700 mx-auto my-12vh overflow-hidden rounded p-4
                     w-90%
                     sm:w-80%
                     md:w-70% 
@@ -21,12 +21,12 @@
                         <div class="flex-1">
                             {{ title }}
                         </div>
-                        <div class="i-ri-close-line cursor-pointer
-                            hover:text-violet-400
-                            " @click="clickCloseIcon">
+                        <div class="flex items-center justify-center rounded w-6 h-6 text-center cursor-pointer"
+                            hover="bg-neutral-500/30" @click="clickCloseIcon">
+                            <div class="i-ri-close-line"></div>
                         </div>
                     </div>
-                    <div class="my-6">
+                    <div class="mt-6 mb-2">
                         <slot />
                     </div>
                     <div v-if="$slots.foot">
@@ -45,15 +45,12 @@ const props = defineProps({
         default: ''
     }
 })
-// const emits = defineEmits([
-//     'update:show'
-// ])
+
 const close = () => {
-    // emits('update:show', false)
     router.back()
 }
 const clickMask = () => {
-    close()
+    // close()
 }
 const clickCloseIcon = () => {
     close()
