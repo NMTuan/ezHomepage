@@ -2,12 +2,21 @@
  * @Author: NMTuan
  * @Email: NMTuan@qq.com
  * @Date: 2022-09-28 11:55:28
- * @LastEditTime: 2022-09-28 17:11:00
+ * @LastEditTime: 2022-10-23 19:35:04
  * @LastEditors: NMTuan
  * @Description: 
- * @FilePath: \ezHomepage\pages\login.vue 
+ * @FilePath: /ezHomepage/pages/login.vue
 -->
 <template>
+    <div class="
+        flex items-center justify-center
+        absolute top-3 right-3
+        text-neutral-500
+        w-6 h-6 rounded
+        cursor-pointer
+    " hover="bg-neutral-500 text-white">
+        <div class="i-ri-settings-4-fill"></div>
+    </div>
     <div class="pt-40 pb-16">
         <img class="block mx-auto" src="~/assets/images/icon128.png" alt="">
     </div>
