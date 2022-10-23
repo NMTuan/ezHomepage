@@ -2,13 +2,13 @@
  * @Author: NMTuan
  * @Email: NMTuan@qq.com
  * @Date: 2022-07-29 10:07:12
- * @LastEditTime: 2022-10-21 11:34:49
+ * @LastEditTime: 2022-10-23 12:27:57
  * @LastEditors: NMTuan
  * @Description: 
- * @FilePath: \ezHomepage\app.vue
+ * @FilePath: /ezHomepage/app.vue
 -->
 <template>
-  <div>
+  <div class="bg-neutral-700">
     <!-- <button @click="handleLogout">logout</button> -->
     <!-- <div text="5xl sky" m="x-auto b-2" class="i-ri-global-line">
     </div>

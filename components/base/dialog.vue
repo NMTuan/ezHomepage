@@ -2,10 +2,10 @@
  * @Author: NMTuan
  * @Email: NMTuan@qq.com
  * @Date: 2022-10-20 17:09:24
- * @LastEditTime: 2022-10-21 16:16:22
+ * @LastEditTime: 2022-10-23 18:31:43
  * @LastEditors: NMTuan
  * @Description: 
- * @FilePath: \ezHomepage\components\base\dialog.vue
+ * @FilePath: /ezHomepage/components/base/dialog.vue
 -->
 <template>
     <div class="text-neutral-300">

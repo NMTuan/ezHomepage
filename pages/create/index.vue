@@ -10,22 +10,10 @@
 <template>
     <BaseDialog title="添加">
         <form action="" @submit.prevent="handleSubmit">
-            <p>
-                <input class="input" type="text" autocomplete="off" placeholder="site title" v-model="formData.name">
-            </p>
-            <p>
-                <input class="input" type="text" autocomplete="off" placeholder="site url" v-model="formData.url">
-            </p>
-            <p>
-                <input class="input" type="text" autocomplete="off" placeholder="tags（中英文逗号或空格都会分割 tag）" v-model="tags">
-            </p>
-            <p class="flex items-center">
-                <button class=" h-11 px-4 py-3 rounded cursor-pointer leading-5 flex-grow bg-sky-500/50"
-                    hover="bg-sky-800" type="submit">
-                    <div v-if="loading" class="i-ri-loader-4-fill animate-spin mx-auto text-lg"></div>
-                    <div v-else>submit</div>
-                </button>
-            </p>
+            <BaseInput v-model="formData.name" placeholder=" site name" />
+            <BaseInput v-model="formData.url" placeholder="site url" />
+            <BaseInput v-model="tags" placeholder="tags（中英文逗号或空格都会分割 tag）" />
+            <BaseButton class="flex-1 bg-sky-500/50" hover="bg-sky-500" :loading="loading">submit1</BaseButton>
         </form>
     </BaseDialog>
 </template>
@@ -85,6 +73,11 @@ const handleSubmit = () => {
                 replace: true,
             })
         })
+        .catch((error) => {
+            loading.value = false
+            alert(error)
+        })
+
 }
 
 

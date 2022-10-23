@@ -10,26 +10,15 @@
 <template>
     <BaseDialog title="编辑">
         <form action="" @submit.prevent="handleSubmit">
-            <p>
-                <input class="input" type="text" autocomplete="off" placeholder="site title" v-model="title">
-            </p>
-            <p>
-                <input class="input" type="text" autocomplete="off" placeholder="site url" v-model="url">
-            </p>
-            <p>
-                <input class="input" type="text" autocomplete="off" placeholder="tags（中英文逗号或空格都会分割 tag）" v-model="tags">
-            </p>
-            <p class="flex items-center">
-                <button class=" h-11 px-4 py-3 rounded cursor-pointer leading-5 flex-grow bg-sky-500/50"
-                    hover="bg-sky-800" type="submit">
-                    <div v-if="loading" class="i-ri-loader-4-fill animate-spin mx-auto text-lg"></div>
-                    <div v-else>submit</div>
-                </button>
-                <button class=" h-11 px-4 py-3 rounded cursor-pointer leading-5 flex-shrink-0 bg-red-500/50 ml-3"
-                    hover="bg-red-800" type="button" @click="handleDelete">
+            <BaseInput v-model="title" placeholder="site name" />
+            <BaseInput v-model="url" placeholder="site url" />
+            <BaseInput v-model="tags" placeholder="tags（中英文逗号或空格都会分割 tag）" />
+            <div class="flex">
+                <BaseButton class="flex-1 bg-sky-500/50" hover="bg-sky-500" :loading="loading">submit</BaseButton>
+                <BaseButton class="ml-3 bg-red-500/50" hover="bg-red-800" type="button" @click="handleDelete">
                     <div class="i-ri-delete-bin-5-line text-lg"></div>
-                </button>
-            </p>
+                </BaseButton>
+            </div>
         </form>
         <NuxtPage />
     </BaseDialog>
@@ -96,6 +85,11 @@ const handleSubmit = () => {
                 replace: true,
             })
         })
+        .catch((error) => {
+            loading.value = false
+            alert(error)
+        })
+
 }
 
 // 拉取数据

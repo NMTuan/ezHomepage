@@ -5,29 +5,29 @@
  * @LastEditTime: 2022-09-28 17:11:00
  * @LastEditors: NMTuan
  * @Description: 
- * @FilePath: \ezHomepage\pages\login.vue
+ * @FilePath: \ezHomepage\pages\login.vue 
 -->
 <template>
-    <div>
-        <h1>login</h1>
-        <form @submit.prevent="handleSubmit">
-            <p>
-                <input type="text" v-model="email" placeholder="email" autocomplete="off">
-            </p>
-            <p>
-                <input type="password" v-model="password" placeholder="password" autocomplete="current-password">
-            </p>
-            <p>
-                <button type="submit">login</button>
-            </p>
-        </form>
+    <div class="pt-40 pb-16">
+        <img class="block mx-auto" src="~/assets/images/icon128.png" alt="">
     </div>
+    <form @submit.prevent="handleSubmit" class="p-3">
+        <BaseInput v-model="email" placeholder="email" />
+        <BaseInput v-model="password" type="password" placeholder="password" />
+        <BaseButton class="bg-sky-500/50 text-white" hover="bg-sky-500" :loading="loading">
+            submit
+        </BaseButton>
+    </form>
 </template>
 <script setup lang="ts">
+definePageMeta({
+    layout: "login",
+});
 const config = useRuntimeConfig()
 const directus = useDirectus()
 const email = ref('')
 const password = ref('')
+const loading = ref(false)
 
 // 如果能从环境变量中找到配置项，则赋值
 if (config.public.email) {
@@ -39,22 +39,24 @@ if (config.public.password) {
 
 
 // 提交登录表单
-const handleSubmit = async () => {
+const handleSubmit = () => {
     if (!email.value || !password.value) {
         return
     }
+    loading.value = true
 
-    await directus.auth.login({
+    directus.auth.login({
         email: email.value,
         password: password.value
     })
         // res:{access_token:string, expires:number, refresh_token:string}
         .then((res) => {
-            console.log('[res]', res);
+            loading.value = false
             navigateTo({ name: 'index' })
         })
         // error:string 错误信息
         .catch((error) => {
+            loading.value = false
             alert(error)
         })
 
