@@ -2,11 +2,14 @@
  * @Author: NMTuan
  * @Email: NMTuan@qq.com
  * @Date: 2022-07-29 15:35:30
- * @LastEditTime: 2022-10-21 16:54:41
+ * @LastEditTime: 2022-10-23 18:44:41
  * @LastEditors: NMTuan
  * @Description: 
- * @FilePath: \ezHomepage\pages\index.vue
+ * @FilePath: /ezHomepage/pages/index.vue
 -->
+<template>
+    <div></div>
+</template>
 <script setup>
 
 // 处理快捷键
