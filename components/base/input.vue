@@ -2,7 +2,7 @@
  * @Author: NMTuan
  * @Email: NMTuan@qq.com
  * @Date: 2022-10-22 15:29:20
- * @LastEditTime: 2022-10-23 12:25:15
+ * @LastEditTime: 2022-10-23 18:57:21
  * @LastEditors: NMTuan
  * @Description: 
  * @FilePath: /ezHomepage/components/base/input.vue
@@ -19,7 +19,7 @@
         <div if="$slots.prepend">
             <slot name="prepend" />
         </div>
-        <input class="
+        <input ref="el" class="
         text-white
         flex-grow
         bg-transparent
@@ -50,10 +50,14 @@ const props = defineProps({
     },
 })
 const emits = defineEmits(['update:modelValue'])
-
+const el = ref(null)
 const autocomplete = computed(() => {
     return props.type === 'password' ? 'current-password' : 'off'
 })
 
+const focus = () => {
+    el.value.focus()
+}
+defineExpose({ focus })
 
 </script>

@@ -2,10 +2,10 @@
  * @Author: NMTuan
  * @Email: NMTuan@qq.com
  * @Date: 2022-07-29 16:05:46
- * @LastEditTime: 2022-10-21 17:20:21
+ * @LastEditTime: 2022-10-23 18:57:41
  * @LastEditors: NMTuan
  * @Description: 
- * @FilePath: \ezHomepage\layouts\default.vue
+ * @FilePath: /ezHomepage/layouts/default.vue
 -->
 <template>
     <div class="
@@ -13,28 +13,19 @@
     h-full overflow-hidden
     bg-neutral-700
     ">
-        <div class="
-        flex
-        items-center
-        flex-shrink-0
-        bg-neutral-500
-        rounded
-        m-3
-        ">
-            <input ref="el" type="text" placeholder="keyword" v-model="q" class="
-            text-white
-            flex-grow bg-transparent px-4 py-3 outline-none
-            " />
-            <div class="
+        <BaseInput ref="el" placeholder="keyword" v-model="q" class="m-3">
+            <template #append>
+                <div class="
             flex items-center justify-center
             w-6 h-6 mr-4 
             text-white/50 
             rounded
             cursor-pointer
             " hover="bg-neutral-600/30">
-                <div class="i-ri-more-fill"></div>
-            </div>
-        </div>
+                    <div class="i-ri-more-fill"></div>
+                </div>
+            </template>
+        </BaseInput>
         <BaseSimplebar ref="simplebar" class="
         flex-1 overflow-hidden
         relative
