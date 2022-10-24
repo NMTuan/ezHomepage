@@ -2,10 +2,10 @@
  * @Author: NMTuan
  * @Email: NMTuan@qq.com
  * @Date: 2022-07-29 16:05:46
- * @LastEditTime: 2022-10-23 18:57:41
+ * @LastEditTime: 2022-10-24 17:25:07
  * @LastEditors: NMTuan
  * @Description: 
- * @FilePath: /ezHomepage/layouts/default.vue
+ * @FilePath: \ezHomepage\layouts\default.vue
 -->
 <template>
     <div class="
@@ -20,9 +20,29 @@
             w-6 h-6 mr-4 
             text-white/50 
             rounded
-            cursor-pointer
+            relative
+            group
             " hover="bg-neutral-600/30">
                     <div class="i-ri-more-fill"></div>
+                    <div class="
+                    absolute right-0 top-6 z-10
+                    bg-neutral-600
+                    shadow-lg
+                    rounded overflow-hidden
+                    text-sm
+                    hidden
+                    py-2
+                    group-hover:block
+                    children:whitespace-nowrap 
+                    children:px-3 
+                    children:py-2
+                    children:cursor-pointer
+                    hover:children:text-white
+                    hover:children:bg-sky-500/50
+                    ">
+                        <div>Options</div>
+                        <div @click="handleLogout">Logout</div>
+                    </div>
                 </div>
             </template>
         </BaseInput>
@@ -101,6 +121,12 @@ const fetch = () => {
         .then(res => {
             data.value = res.data
         })
+}
+
+// 登出
+const handleLogout = async () => {
+    await directus.auth.logout()
+    navigateTo({ name: 'login' })
 }
 
 // 自动重载数据

@@ -2,10 +2,10 @@
  * @Author: NMTuan
  * @Email: NMTuan@qq.com
  * @Date: 2022-10-22 15:29:20
- * @LastEditTime: 2022-10-23 18:57:21
+ * @LastEditTime: 2022-10-24 14:31:03
  * @LastEditors: NMTuan
  * @Description: 
- * @FilePath: /ezHomepage/components/base/input.vue
+ * @FilePath: \ezHomepage\components\base\input.vue
 -->
 <template>
     <div class="
@@ -25,8 +25,11 @@
         bg-transparent
         px-4 py-3
         outline-none
-        " :type="type" :placeholder="placeholder" :autocomplete="autocomplete" v-model="modelValue"
-            @input="$emit('update:modelValue', $event.target.value)">
+        " :class="{
+            'cursor-not-allowed': disabled,
+            'text-neutral-300': disabled
+        }" :type="type" :placeholder="placeholder" :autocomplete="autocomplete" v-model="modelValue"
+            @input="$emit('update:modelValue', $event.target.value)" :disabled="disabled">
         <div v-if="$slots.append">
             <slot name="append" />
         </div>
@@ -48,6 +51,10 @@ const props = defineProps({
         type: String,
         default: ''
     },
+    disabled: {
+        type: Boolean,
+        default: false
+    }
 })
 const emits = defineEmits(['update:modelValue'])
 const el = ref(null)

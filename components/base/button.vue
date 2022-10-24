@@ -2,17 +2,16 @@
  * @Author: NMTuan
  * @Email: NMTuan@qq.com
  * @Date: 2022-10-22 17:20:26
- * @LastEditTime: 2022-10-23 12:25:08
+ * @LastEditTime: 2022-10-24 09:37:52
  * @LastEditors: NMTuan
  * @Description: 
- * @FilePath: /ezHomepage/components/base/button.vue
+ * @FilePath: \ezHomepage\components\base\button.vue
 -->
 <template>
     <div class="
         flex
         items-center
         flex-shrink-0
-        bg-neutral-500
         rounded
     ">
         <button class="
