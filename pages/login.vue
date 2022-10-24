@@ -2,7 +2,7 @@
  * @Author: NMTuan
  * @Email: NMTuan@qq.com
  * @Date: 2022-09-28 11:55:28
- * @LastEditTime: 2022-10-24 18:39:06
+ * @LastEditTime: 2022-10-24 21:47:14
  * @LastEditors: NMTuan
  * @Description: 
  * @FilePath: /ezHomepage/pages/login.vue
@@ -15,22 +15,20 @@
         text-neutral-500
         w-6 h-6 rounded
         cursor-pointer
-    " hover="bg-neutral-500 text-white">
-            <div class="i-ri-settings-4-fill"></div>
+    " hover="bg-neutral-500 text-white" @click="navigateTo({name: 'options'})" title="Login with self-hosted">
+            <div class="i-ri-arrow-left-right-line"></div>
         </div>
-        <div>
-            <form @submit.prevent="handleSubmit" class="p-3">
-                <BaseInput v-model="email" placeholder="email" />
-                <BaseInput v-model="password" type="password" placeholder="password" />
-                <BaseButton class="flex-1 bg-sky-500/50 text-white" hover="bg-sky-500" :loading="loading">
-                    Login
-                </BaseButton>
-            </form>
-            <div class="text-center text-sm text-neutral-500">
-                Don't have an account?
-                <NuxtLink class="text-sky-500/50" hover="text-sky-500" :to="{name: 'invite'}">Register for Free
-                </NuxtLink>
-            </div>
+        <form @submit.prevent="handleSubmit" class="p-3">
+            <BaseInput v-model="email" placeholder="email" />
+            <BaseInput v-model="password" type="password" placeholder="password" />
+            <BaseButton class="flex-1 bg-sky-500/50 text-white" hover="bg-sky-500" :loading="loading">
+                Login
+            </BaseButton>
+        </form>
+        <div class="text-center text-sm text-neutral-500">
+            Don't have an account?
+            <NuxtLink class="text-sky-500/50" hover="text-sky-500" :to="{name: 'invite'}">Register for Free
+            </NuxtLink>
         </div>
     </div>
 </template>
