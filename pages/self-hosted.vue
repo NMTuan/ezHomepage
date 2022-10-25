@@ -2,22 +2,25 @@
  * @Author: NMTuan
  * @Email: NMTuan@qq.com
  * @Date: 2022-10-24 20:00:57
- * @LastEditTime: 2022-10-25 15:30:05
+ * @LastEditTime: 2022-10-25 19:30:45
  * @LastEditors: NMTuan
  * @Description: 
- * @FilePath: \ezHomepage\pages\self-hosted.vue
+ * @FilePath: /ezHomepage/pages/self-hosted.vue
 -->
 <template>
     <div>
         <form @submit.prevent="handleSubmit" class="p-3">
-            <BaseInput v-model="host" placeholder="host" />
-            <BaseInput v-model="token" placeholder="static token" />
+            <BaseInput v-model="host" :placeholder="$t('pages.selfHosted.host')" />
+            <BaseInput v-model="token" :placeholder="$t('pages.selfHosted.token')" />
             <BaseButton class="flex-1 bg-sky-500/50 text-white" hover="bg-sky-500" :loading="loading">
-                Login with self-hosted
+                {{$t('pages.selfHosted.submit')}}
             </BaseButton>
         </form>
         <div class="text-center text-sm text-neutral-500">
-            Documents
+            {{$t('pages.selfHosted.tip')}}
+            <a href="#" target="_blank" class="text-sky-500/50" hover="text-sky-500">
+                {{$t('pages.selfHosted.link')}}
+            </a>
         </div>
         <!-- <div @click="handleLogout">logout</div> -->
     </div>
@@ -66,15 +69,15 @@ const handleSubmit = () => {
             //     collection: 'test',
             //     schema: {}
             // })
-directus.items('directus_collections').readByQuery({
+            directus.items('directus_collections').readByQuery({
             })
                 .then(res => {
-                console.log(res);
-            })
+                    console.log(res);
+                })
         })
         .catch(error => {
-        alert(error)
-    })
+            alert(error)
+        })
 
 }
 </script>

@@ -2,18 +2,20 @@
  * @Author: NMTuan
  * @Email: NMTuan@qq.com
  * @Date: 2022-10-21 16:46:05
- * @LastEditTime: 2022-10-21 17:19:22
+ * @LastEditTime: 2022-10-25 20:17:34
  * @LastEditors: NMTuan
  * @Description: 
- * @FilePath: \ezHomepage\pages\create\index.vue
+ * @FilePath: /ezHomepage/pages/create/index.vue
 -->
 <template>
-    <BaseDialog title="添加">
+    <BaseDialog :title="$t('pages.create.title')">
         <form action="" @submit.prevent="handleSubmit">
-            <BaseInput v-model="formData.name" placeholder=" site name" />
-            <BaseInput v-model="formData.url" placeholder="site url" />
-            <BaseInput v-model="tags" placeholder="tags（中英文逗号或空格都会分割 tag）" />
-            <BaseButton class="flex-1 bg-sky-500/50" hover="bg-sky-500" :loading="loading">submit1</BaseButton>
+            <BaseInput v-model="formData.name" :placeholder="$t('pages.create.name')" />
+            <BaseInput v-model="formData.url" :placeholder="$t('pages.create.url')" />
+            <BaseInput v-model="tags" :placeholder="$t('pages.create.tags')" />
+            <BaseButton class="flex-1 bg-sky-500/50" hover="bg-sky-500" :loading="loading">
+                {{$t('pages.create.submit')}}
+            </BaseButton>
         </form>
     </BaseDialog>
 </template>

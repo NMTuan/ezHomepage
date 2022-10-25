@@ -2,10 +2,10 @@
  * @Author: NMTuan
  * @Email: NMTuan@qq.com
  * @Date: 2022-07-29 16:05:46
- * @LastEditTime: 2022-10-24 17:25:07
+ * @LastEditTime: 2022-10-25 20:44:08
  * @LastEditors: NMTuan
  * @Description: 
- * @FilePath: \ezHomepage\layouts\default.vue
+ * @FilePath: /ezHomepage/layouts/default.vue
 -->
 <template>
     <div class="
@@ -13,7 +13,7 @@
     h-full overflow-hidden
     bg-neutral-700
     ">
-        <BaseInput ref="el" placeholder="keyword" v-model="q" class="m-3">
+        <BaseInput ref="el" :placeholder="$t('layouts.default.keyword')" v-model="q" class="m-3">
             <template #append>
                 <div class="
             flex items-center justify-center
@@ -40,8 +40,8 @@
                     hover:children:text-white
                     hover:children:bg-sky-500/50
                     ">
-                        <div>Options</div>
-                        <div @click="handleLogout">Logout</div>
+                        <div>{{$t('layouts.default.menu.options')}}</div>
+                        <div @click="handleLogout">{{$t('layouts.default.menu.logout')}}</div>
                     </div>
                 </div>
             </template>

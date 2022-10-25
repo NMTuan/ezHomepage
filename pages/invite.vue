@@ -2,10 +2,10 @@
  * @Author: NMTuan
  * @Email: NMTuan@qq.com
  * @Date: 2022-10-24 10:37:22
- * @LastEditTime: 2022-10-24 14:38:57
+ * @LastEditTime: 2022-10-25 19:39:03
  * @LastEditors: NMTuan
  * @Description: 
- * @FilePath: \ezHomepage\pages\invite.vue
+ * @FilePath: /ezHomepage/pages/invite.vue
 -->
 <template>
     <div>
@@ -13,23 +13,25 @@
         <template v-if="inviteToken">
             <form @submit.prevent="handleCreate" class="p-3">
                 <BaseInput :modelValue="inviteToken" disabled />
-                <BaseInput v-model="password" type="password" placeholder="password" />
+                <BaseInput v-model="password" type="password" :placeholder="$t('pages.invite.password')" />
                 <BaseButton class="flex-1 bg-sky-500/50 text-white" hover="bg-sky-500" :loading="loading">
-                    Create Account
+                    {{$t('pages.invite.create')}}
                 </BaseButton>
             </form>
         </template>
         <!-- 发邀请 -->
         <template v-else>
             <form @submit.prevent="sendInvite" class="p-3">
-                <BaseInput v-model="email" placeholder="email" />
+                <BaseInput v-model="email" :placeholder="$t('pages.invite.email')" />
                 <BaseButton class="flex-1 bg-sky-500/50 text-white" hover="bg-sky-500" :loading="loading">
-                    Send Invitation
+                    {{$t('pages.invite.submit')}}
                 </BaseButton>
             </form>
             <div class="text-center text-sm text-neutral-500">
-                Already have an account?
-                <NuxtLink class="text-sky-500/50" hover="text-sky-500" :to="{name: 'login'}">Sign In</NuxtLink>
+                {{$t('pages.invite.tip')}}
+                <NuxtLink class="text-sky-500/50" hover="text-sky-500" :to="{name: 'login'}">
+                    {{$t('pages.invite.link')}}
+                </NuxtLink>
             </div>
 
         </template>

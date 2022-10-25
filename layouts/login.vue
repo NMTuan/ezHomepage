@@ -2,10 +2,10 @@
  * @Author: NMTuan
  * @Email: NMTuan@qq.com
  * @Date: 2022-10-21 20:08:15
- * @LastEditTime: 2022-10-25 17:26:04
+ * @LastEditTime: 2022-10-25 19:19:59
  * @LastEditors: NMTuan
  * @Description: 
- * @FilePath: \ezHomepage\layouts\login.vue
+ * @FilePath: /ezHomepage/layouts/login.vue
 -->
 <template>
     <div>
@@ -36,16 +36,7 @@
                 <div class="i-ri-server-fill"></div>
                 <div class="text-xs mx-1">{{ $t('layouts.login.selfHosted') }}</div>
             </div>
-            <div class="
-                flex items-center justify-center
-                h-6 rounded
-                cursor-pointer
-                px-1 ml-3
-                select-none
-            " hover="bg-neutral-500 text-white" @click="navigateTo({ name: 'login' })">
-                <div class="i-ri-earth-fill"></div>
-            </div>
-
+            <BaseToggleLocales />
         </div>
         <div class="pt-40 pb-16">
             <img class="block mx-auto" src="~/assets/images/icon128.png" alt="">

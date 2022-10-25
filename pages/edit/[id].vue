@@ -2,19 +2,21 @@
  * @Author: NMTuan
  * @Email: NMTuan@qq.com
  * @Date: 2022-09-30 16:57:21
- * @LastEditTime: 2022-10-21 16:17:23
+ * @LastEditTime: 2022-10-25 20:18:08
  * @LastEditors: NMTuan
  * @Description: 
- * @FilePath: \ezHomepage\pages\edit\[id].vue
+ * @FilePath: /ezHomepage/pages/edit/[id].vue
 -->
 <template>
-    <BaseDialog title="编辑">
+    <BaseDialog :title="$t('pages.edit.title')">
         <form action="" @submit.prevent="handleSubmit">
-            <BaseInput v-model="title" placeholder="site name" />
-            <BaseInput v-model="url" placeholder="site url" />
-            <BaseInput v-model="tags" placeholder="tags（中英文逗号或空格都会分割 tag）" />
+            <BaseInput v-model="title" :placeholder="$t('pages.edit.name')" />
+            <BaseInput v-model="url" :placeholder="$t('pages.edit.url')" />
+            <BaseInput v-model="tags" :placeholder="$t('pages.edit.tags')" />
             <div class="flex">
-                <BaseButton class="flex-1 bg-sky-500/50" hover="bg-sky-500" :loading="loading">submit</BaseButton>
+                <BaseButton class="flex-1 bg-sky-500/50" hover="bg-sky-500" :loading="loading">
+                    {{$t('pages.edit.submit')}}
+                </BaseButton>
                 <BaseButton class="ml-3 bg-red-500/50" hover="bg-red-800" type="button" @click="handleDelete">
                     <div class="i-ri-delete-bin-5-line text-lg"></div>
                 </BaseButton>

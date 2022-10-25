@@ -3,5 +3,62 @@
     "language": "语言",
     "menu": {
         "home": "首页"
+    },
+    "layouts": {
+        "login": {
+            "cloud": "云服务",
+            "selfHosted": "自建服务"
+        },
+        "default": {
+            "keyword": "关键字",
+            "menu": {
+                "options": "配置",
+                "logout": "退出"
+            }
+        }
+    },
+    "pages": {
+        "login": {
+            "email": "邮箱",
+            "password": "密码",
+            "submit": "登录",
+            "tip": "还没有账号？",
+            "link": "免费注册"
+        },
+        "selfHosted": {
+            "host": "服务器地址",
+            "token": "静态密钥",
+            "submit": "登录",
+            "tip": "如何自建？",
+            "link": "指引手册"
+        },
+        "invite": {
+            "email": "邮箱",
+            "submit": "发送邮件邀请",
+            "tip": "已经有账号了？",
+            "link": "登录",
+            "password": "密码",
+            "create": "创建账号"
+        },
+        "create": {
+            "title": "新建书签",
+            "name": "站点标题",
+            "url": "站点地址",
+            "tags": "标签 (逗号或空格会自动分割)",
+            "submit": "创建"
+        },
+        "edit": {
+            "title": "更新书签",
+            "name": "站点标题",
+            "url": "站点地址",
+            "tags": "标签 (逗号或空格会自动分割)",
+            "submit": "更新"
+        },
+        "delete": {
+            "title": "警告",
+            "content": "数据删除后将无法恢复，确定要删除 <span class=\'text-sky-500\'>【{title}】</span> 吗？",
+            "cancel": "取消",
+            "submit": "删除"
+        }
     }
 }

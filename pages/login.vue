@@ -2,7 +2,7 @@
  * @Author: NMTuan
  * @Email: NMTuan@qq.com
  * @Date: 2022-09-28 11:55:28
- * @LastEditTime: 2022-10-24 21:47:14
+ * @LastEditTime: 2022-10-25 19:26:44
  * @LastEditors: NMTuan
  * @Description: 
  * @FilePath: /ezHomepage/pages/login.vue
@@ -10,15 +10,16 @@
 <template>
     <div>
         <form @submit.prevent="handleSubmit" class="p-3">
-            <BaseInput v-model="email" placeholder="email" />
-            <BaseInput v-model="password" type="password" placeholder="password" />
+            <BaseInput v-model="email" :placeholder="$t('pages.login.email')" />
+            <BaseInput v-model="password" type="password" :placeholder="$t('pages.login.password')" />
             <BaseButton class="flex-1 bg-sky-500/50 text-white" hover="bg-sky-500" :loading="loading">
-                Login
+                {{$t('pages.login.submit')}}
             </BaseButton>
         </form>
         <div class="text-center text-sm text-neutral-500">
-            Don't have an account?
-            <NuxtLink class="text-sky-500/50" hover="text-sky-500" :to="{ name: 'invite' }">Register for Free
+            {{$t('pages.login.tip')}}
+            <NuxtLink class="text-sky-500/50" hover="text-sky-500" :to="{ name: 'invite' }">
+                {{$t('pages.login.link')}}
             </NuxtLink>
         </div>
     </div>

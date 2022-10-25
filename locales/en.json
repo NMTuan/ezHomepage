@@ -8,6 +8,57 @@
         "login": {
             "cloud": "CLOUD",
             "selfHosted": "SELF-HOSTED"
+        },
+        "default": {
+            "keyword": "Keyword",
+            "menu": {
+                "options": "Options",
+                "logout": "Logout"
+            }
+        }
+    },
+    "pages": {
+        "login": {
+            "email": "Email",
+            "password": "Password",
+            "submit": "Login",
+            "tip": "Don't have an account?",
+            "link": "Register for Free"
+        },
+        "selfHosted": {
+            "host": "Host Url",
+            "token": "Static Token",
+            "submit": "Login",
+            "tip": "How to self hosted?",
+            "link": "Guide manual"
+        },
+        "invite": {
+            "email": "Email",
+            "submit": "Send Invitation",
+            "tip": "Already have an account?",
+            "link": "Sign In",
+            "password": "Password",
+            "create": "Create Account"
+        },
+        "create": {
+            "title": "New Bookmark",
+            "name": "Site Title",
+            "url": "Site Url",
+            "tags": "Tags (commas or spaces are automatically split)",
+            "submit": "Create"
+        },
+        "edit": {
+            "title": "Update Bookmark",
+            "name": "Site Title",
+            "url": "Site Url",
+            "tags": "Tags (commas or spaces are automatically split)",
+            "submit": "Update"
+        },
+        "delete": {
+            "title": "Waring",
+            "content": "Data cannot be recovered after deletion. Are you sure you want to delete <span class=\'text-sky-500\'> [ {title} ] </span> ?",
+            "cancel": "Cancel",
+            "submit": "Delete"
         }
     }
 }
