@@ -2,7 +2,7 @@
  * @Author: NMTuan
  * @Email: NMTuan@qq.com
  * @Date: 2022-07-29 10:07:12
- * @LastEditTime: 2022-10-18 15:01:09
+ * @LastEditTime: 2022-10-25 17:23:44
  * @LastEditors: NMTuan
  * @Description:
  * @FilePath: \ezHomepage\nuxt.config.ts
@@ -28,8 +28,8 @@ export default defineNuxtConfig({
     intlify: {
         localeDir: 'locales',
         vueI18n: {
-            locale: 'zh-CN',
-            fallbackLocale: 'zh-CN'
+            locale: 'en',
+            fallbackLocale: 'en'
         }
     },
     colorMode: {

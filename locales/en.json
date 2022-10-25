@@ -3,5 +3,11 @@
     "language": "Language",
     "menu": {
         "home": "Home"
+    },
+    "layouts": {
+        "login": {
+            "cloud": "CLOUD",
+            "selfHosted": "SELF-HOSTED"
+        }
     }
 }
