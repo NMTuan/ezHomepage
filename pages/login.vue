@@ -9,15 +9,6 @@
 -->
 <template>
     <div>
-        <div class="
-        flex items-center justify-center
-        absolute top-3 right-3
-        text-neutral-500
-        w-6 h-6 rounded
-        cursor-pointer
-    " hover="bg-neutral-500 text-white" @click="navigateTo({name: 'options'})" title="Login with self-hosted">
-            <div class="i-ri-arrow-left-right-line"></div>
-        </div>
         <form @submit.prevent="handleSubmit" class="p-3">
             <BaseInput v-model="email" placeholder="email" />
             <BaseInput v-model="password" type="password" placeholder="password" />
@@ -27,7 +18,7 @@
         </form>
         <div class="text-center text-sm text-neutral-500">
             Don't have an account?
-            <NuxtLink class="text-sky-500/50" hover="text-sky-500" :to="{name: 'invite'}">Register for Free
+            <NuxtLink class="text-sky-500/50" hover="text-sky-500" :to="{ name: 'invite' }">Register for Free
             </NuxtLink>
         </div>
     </div>

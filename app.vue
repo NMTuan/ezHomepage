@@ -2,10 +2,10 @@
  * @Author: NMTuan
  * @Email: NMTuan@qq.com
  * @Date: 2022-07-29 10:07:12
- * @LastEditTime: 2022-10-23 12:27:57
+ * @LastEditTime: 2022-10-25 14:53:00
  * @LastEditors: NMTuan
  * @Description: 
- * @FilePath: /ezHomepage/app.vue
+ * @FilePath: \ezHomepage\app.vue
 -->
 <template>
   <div class="bg-neutral-700">
@@ -38,10 +38,10 @@ const directus = useDirectus()
 // }
 
 // 登出
-const handleLogout = async () => {
-  await directus.auth.logout()
-  navigateTo({ name: 'login' })
-}
+// const handleLogout = async () => {
+//   await directus.auth.logout()
+//   navigateTo({ name: 'login' })
+// }
 </script>
 <style lang="scss">
 html,
