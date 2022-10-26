@@ -2,10 +2,10 @@
  * @Author: NMTuan
  * @Email: NMTuan@qq.com
  * @Date: 2022-10-24 10:37:22
- * @LastEditTime: 2022-10-25 19:39:03
+ * @LastEditTime: 2022-10-26 16:31:29
  * @LastEditors: NMTuan
  * @Description: 
- * @FilePath: /ezHomepage/pages/invite.vue
+ * @FilePath: \ezHomepage\pages\invite.vue
 -->
 <template>
     <div>
@@ -15,7 +15,7 @@
                 <BaseInput :modelValue="inviteToken" disabled />
                 <BaseInput v-model="password" type="password" :placeholder="$t('pages.invite.password')" />
                 <BaseButton class="flex-1 bg-sky-500/50 text-white" hover="bg-sky-500" :loading="loading">
-                    {{$t('pages.invite.create')}}
+                    {{ $t('pages.invite.create') }}
                 </BaseButton>
             </form>
         </template>
@@ -24,13 +24,13 @@
             <form @submit.prevent="sendInvite" class="p-3">
                 <BaseInput v-model="email" :placeholder="$t('pages.invite.email')" />
                 <BaseButton class="flex-1 bg-sky-500/50 text-white" hover="bg-sky-500" :loading="loading">
-                    {{$t('pages.invite.submit')}}
+                    {{ $t('pages.invite.submit') }}
                 </BaseButton>
             </form>
             <div class="text-center text-sm text-neutral-500">
-                {{$t('pages.invite.tip')}}
-                <NuxtLink class="text-sky-500/50" hover="text-sky-500" :to="{name: 'login'}">
-                    {{$t('pages.invite.link')}}
+                {{ $t('pages.invite.tip') }}
+                <NuxtLink class="text-sky-500/50" hover="text-sky-500" :to="{ name: 'login' }">
+                    {{ $t('pages.invite.link') }}
                 </NuxtLink>
             </div>
 
@@ -44,7 +44,7 @@ definePageMeta({
     check: false
 });
 const route = useRoute()
-const directus = useDirectus()
+const directus = useDirectusCloud()
 const email = ref('')
 const password = ref('')
 const inviteToken = ref('')

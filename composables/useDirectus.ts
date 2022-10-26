@@ -2,9 +2,9 @@
  * @Author: NMTuan
  * @Email: NMTuan@qq.com
  * @Date: 2022-09-27 17:36:38
- * @LastEditTime: 2022-10-25 16:50:23
+ * @LastEditTime: 2022-10-26 16:32:37
  * @LastEditors: NMTuan
- * @Description:
+ * @Description: 通用版本，根据 cookie 判断 云/自建
  * @FilePath: \ezHomepage\composables\useDirectus.ts
  */
 import { Directus } from '@directus/sdk'
