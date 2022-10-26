@@ -2,10 +2,10 @@
  * @Author: NMTuan
  * @Email: NMTuan@qq.com
  * @Date: 2022-10-24 20:00:57
- * @LastEditTime: 2022-10-25 19:30:45
+ * @LastEditTime: 2022-10-26 17:28:19
  * @LastEditors: NMTuan
  * @Description: 
- * @FilePath: /ezHomepage/pages/self-hosted.vue
+ * @FilePath: \ezHomepage\pages\self-hosted.vue
 -->
 <template>
     <div>
@@ -13,13 +13,13 @@
             <BaseInput v-model="host" :placeholder="$t('pages.selfHosted.host')" />
             <BaseInput v-model="token" :placeholder="$t('pages.selfHosted.token')" />
             <BaseButton class="flex-1 bg-sky-500/50 text-white" hover="bg-sky-500" :loading="loading">
-                {{$t('pages.selfHosted.submit')}}
+                {{ $t('pages.selfHosted.submit') }}
             </BaseButton>
         </form>
         <div class="text-center text-sm text-neutral-500">
-            {{$t('pages.selfHosted.tip')}}
+            {{ $t('pages.selfHosted.tip') }}
             <a href="#" target="_blank" class="text-sky-500/50" hover="text-sky-500">
-                {{$t('pages.selfHosted.link')}}
+                {{ $t('pages.selfHosted.link') }}
             </a>
         </div>
         <!-- <div @click="handleLogout">logout</div> -->
@@ -69,15 +69,45 @@ const handleSubmit = () => {
             //     collection: 'test',
             //     schema: {}
             // })
-            directus.items('directus_collections').readByQuery({
-            })
-                .then(res => {
-                    console.log(res);
-                })
+            handleCollections()
         })
         .catch(error => {
             alert(error)
         })
+}
+
+// 处理表
+const handleCollections = async () => {
+    const res = await directus.items('directus_collections').readByQuery({
+        limit: -1,
+    })
+    console.log('[res]', res);
+    const bookmark_exits = res.data.find(item => item.collection === 'bookmark')
+    if (!bookmark_exits) {
+        directus.items('directus_collections').createOne({
+            "collection": "bookmarks",
+            "meta": {
+                "collection": "bookmarks",
+                "icon": null,
+                "note": null,
+                "display_template": null,
+                "hidden": false,
+                "singleton": false,
+                "translations": null,
+                "archive_field": "status",
+                "archive_app_filter": true,
+                "archive_value": "archived",
+                "unarchive_value": "draft",
+                "sort_field": "sort",
+                "accountability": "all",
+                "color": null,
+                "item_duplication_fields": null,
+                "sort": 1,
+                "group": null,
+                "collapse": "open"
+            }
+        })
+    }
 
 }
 </script>
