@@ -2,10 +2,10 @@
  * @Author: NMTuan
  * @Email: NMTuan@qq.com
  * @Date: 2022-07-29 16:05:46
- * @LastEditTime: 2022-10-25 20:44:08
+ * @LastEditTime: 2022-10-27 10:30:44
  * @LastEditors: NMTuan
  * @Description: 
- * @FilePath: /ezHomepage/layouts/default.vue
+ * @FilePath: \ezHomepage\layouts\default.vue
 -->
 <template>
     <div class="
@@ -40,8 +40,8 @@
                     hover:children:text-white
                     hover:children:bg-sky-500/50
                     ">
-                        <div>{{$t('layouts.default.menu.options')}}</div>
-                        <div @click="handleLogout">{{$t('layouts.default.menu.logout')}}</div>
+                        <div>{{ $t('layouts.default.menu.options') }}</div>
+                        <div @click="handleLogout">{{ $t('layouts.default.menu.logout') }}</div>
                     </div>
                 </div>
             </template>
@@ -152,4 +152,12 @@ watch(route, () => {
         el.value.focus()
     }
 })
+
+
+
+directus.items('directus_fields').readByQuery()
+    .then(res => {
+        console.log(res);
+
+    })
 </script>
