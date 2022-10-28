@@ -2,7 +2,7 @@
  * @Author: NMTuan
  * @Email: NMTuan@qq.com
  * @Date: 2022-10-27 15:53:23
- * @LastEditTime: 2022-10-27 15:53:27
+ * @LastEditTime: 2022-10-28 15:39:52
  * @LastEditors: NMTuan
  * @Description:
  * @FilePath: \ezHomepage\db\tags\fields\date_created.js
@@ -30,7 +30,7 @@ export default {
         comment: ''
     },
     meta: {
-        id: 50,
+        // id: 50,
         collection: 'tags',
         field: 'date_created',
         special: ['date-created'],
