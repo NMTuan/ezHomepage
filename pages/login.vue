@@ -2,7 +2,7 @@
  * @Author: NMTuan
  * @Email: NMTuan@qq.com
  * @Date: 2022-09-28 11:55:28
- * @LastEditTime: 2022-10-26 16:31:01
+ * @LastEditTime: 2022-10-28 16:41:49
  * @LastEditors: NMTuan
  * @Description: 
  * @FilePath: \ezHomepage\pages\login.vue
@@ -59,7 +59,8 @@ const handleSubmit = () => {
         // res:{access_token:string, expires:number, refresh_token:string}
         .then((res) => {
             loading.value = false
-            navigateTo({ name: 'index' })
+            window.location.href = '/'
+            // navigateTo({ name: 'index' })
         })
         // error:string 错误信息
         .catch((error) => {

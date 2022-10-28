@@ -2,7 +2,7 @@
  * @Author: NMTuan
  * @Email: NMTuan@qq.com
  * @Date: 2022-10-24 20:00:57
- * @LastEditTime: 2022-10-28 16:28:58
+ * @LastEditTime: 2022-10-28 16:33:19
  * @LastEditors: NMTuan
  * @Description: 
  * @FilePath: \ezHomepage\pages\self-hosted.vue
@@ -11,7 +11,8 @@
     <div>
         <form @submit.prevent="handleSubmit" class="p-3">
             <BaseInput v-model="host" :placeholder="$t('pages.selfHosted.host')" />
-            <BaseInput v-model="token" :placeholder="$t('pages.selfHosted.token')" />
+            <BaseInput v-model="email" :placeholder="$t('pages.login.email')" />
+            <BaseInput v-model="password" type="password" :placeholder="$t('pages.login.password')" />
             <BaseButton class="flex-1 bg-sky-500/50 text-white" hover="bg-sky-500" :loading="loading">
                 {{ $t('pages.selfHosted.submit') }}
             </BaseButton>
@@ -26,14 +27,14 @@
 </template>
 <script setup>
 import { Directus } from '@directus/sdk'
-import db from '~~/db'
 let directus
 definePageMeta({
     layout: 'login',
     check: false
 })
 const host = ref('')
-const token = ref('XtVWd--k92xDLgMWZFn7inB_hmZsCrZM')
+const email = ref('')
+const password = ref('')
 const loading = ref(false)
 
 const hostCookie = useCookie('ezHomepage_host', {
@@ -45,6 +46,10 @@ if (hostCookie.value) {
 }
 
 const handleSubmit = () => {
+    if (!email.value || !password.value) {
+        alert('请输入邮箱或密码')
+        return
+    }
 
     directus = new Directus(host.value, {
         auth: {
@@ -52,13 +57,14 @@ const handleSubmit = () => {
         }
     })
 
-    directus.auth.static(token.value)
+    directus.auth.login({
+        email: email.value.trim(),
+        password: password.value
+    })
         .then(res => {
             // 登录成功， 记录 host 信息
             hostCookie.value = host.value
-            // directus.auth.resetStorage()
-            // directus.auth.refresh();
-            // window.location.href = '/'
+            window.location.href = '/'
         })
         .catch(error => {
             alert(error)
